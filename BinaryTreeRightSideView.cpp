@@ -1,37 +1,29 @@
 class Solution {
 public:
 	vector<int> rightSideView(TreeNode *root) {
-		vector<int> rtNode;
+		vector<int> rtVal;
 		vector<TreeNode*> q1, q2;
 		if(root) {
 			q1.push_back(root);
 		}
 		while(!(q1.empty() && q2.empty())) {// both empty?
-			if(!q1.empty()) {
-				rtNode.push_back(q1[q1.size()-1]->val);//push right value
-				for(auto &i: q1) {//push leafNode to q2
-					if(i->left) {
-						q2.push_back(i->left);
-					}
-					if(i->right) {
-						q2.push_back(i->right);
-					}
-				}
-				q1.clear();
+			vector<TreeNode*> &father = q1.empty() ? q2 : q1;
+			vector<TreeNode*> &son = q1.empty() ? q1 : q2;
+			rtVal.push_back(pushSonNode(father, son));//push sunnode to son queue
+		}
+		return rtVal;
+	}
+	int pushSonNode(vector<TreeNode*> &father, vector<TreeNode*> &son) {//return (father) right value
+		int val = father[father.size() - 1]->val;//push right value
+		for(auto &i : father) {//push leafNode to q1
+			if(i->left) {
+				son.push_back(i->left);
 			}
-			else if(!q2.empty()) {
-				rtNode.push_back(q2[q2.size()-1]->val);//push right value
-				for(auto &i : q2) {//push leafNode to q1
-					if(i->left) {
-						q1.push_back(i->left);
-					}
-					if(i->right) {
-						q1.push_back(i->right);
-					}
-				}
-				q2.clear();
+			if(i->right) {
+				son.push_back(i->right);
 			}
 		}
-		return rtNode;
+		father.clear();
+		return val;
 	}
 };
