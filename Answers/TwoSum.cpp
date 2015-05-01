@@ -1,3 +1,4 @@
+
 typedef struct hst {
 	int data;
 	int index;
@@ -17,7 +18,7 @@ public:
 		}
 		mergeSort(hst, 0, nums.size()-1);
 		for(int i = 0; i < nums.size(); ++i) {
-			index2 = binarySearch(hst, target - hst[i].data);
+			index2 = binarySearch(hst, target - hst[i].data);//find
 			if(index2 != -1) {
 				index2 = hst[index2].index;
 				if(hst[i].index < index2) {
@@ -80,3 +81,4 @@ int binarySearch(vector<Hst> &sqc, int item) {
 	}
 	return (mid - sqc.begin());
 }
+//The answer is not good
