@@ -1,2 +1,4 @@
 # MyLeetCode
-My leetcode OJ answers
+leetcode OJ answers
+Author: Bread
+Update: 15/5/3
