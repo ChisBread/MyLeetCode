@@ -4,7 +4,7 @@ public:
         int len = 0;
         for(int i = 0; i < s.size(); ++i) {
             bool m[256] = {};
-            for(int j = 0; !m[s[i+j]] && i+j < s.size(); ++j) {
+            for(int j = 0; i + j < s.size() && !m[s[i+j]]; ++j) {
                 m[s[i+j]] = true;
                 if(j + 1 > len) {
                     len = j + 1;
