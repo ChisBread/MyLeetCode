@@ -1,3 +1,3 @@
 # MyLeetCode
-leetcode OJ answers
+answers of leetcode OJ.
 Author: Bread
